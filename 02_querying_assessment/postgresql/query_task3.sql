@@ -31,7 +31,9 @@
 
 
 SELECT
-    Staff.first_name || ' ' || Staff.last_name AS full_name,
+    Staff.first_name || ' ' || Staff.last_name AS full_name, -- รวมชื่อเป็น full name
+    -- ถ้าไต้องการแยกชชื่อ สามารถใช้คำสั่งที่คอมเม้นได้
+    -- Staff.first_name , Staff.last_name,
     COUNT(Orders.order_id) AS order_count
 FROM Staff
 INNER JOIN Orders ON Staff.staff_id = Orders.staff_id  
