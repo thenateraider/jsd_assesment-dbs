@@ -18,4 +18,23 @@
 // Write in English or Thai. Do not skip this step.
 //
 // Your thinking:
-//
+// อันดับแรก ต้องทำการดูโครงสร้างข้อมูล chrome burger db ก่อน โดยเราสนใจในส่วนออเดอร์ จะไปดูที่ Collection "orders" โดยเมื่อเข้าไปแล้ว
+// ก็จะพบเจอ document รายการสั่งซื้อ หรือออเดอร์แต่ละอัน และแต่ละออเดอร์ก็จะมีข้อมูลของตนเอง
+// จากโจทย์ข้อนี่ เราจะสนใจ "ออเดอร์ที่อันที่อยู่ภายใต้การรับของพนักงานที่ชื่อ Jane Doe"
+// เราก็ต้องกวาด ค้นหา ข้อมูลทุกอันใน collection "orders" 
+// โดยเราจะสนใจขั้นแรกโดยการกรองหา find key ชื่อ "staff" ที่มี nested dcoument ย่อย ที่ประกอบไปด้วย
+// first_name ที่ต้องมี value บรรจุว่า "Jane" และ last_name ที่บรรจุ valur ว่า "Doe" และเราไม่ได้สนใจไอดีในตอนนี้
+// จากนั้น พอได้ออเดอร์ทุกออเดอร์ของ Jane Doe แล้ว ก็ทำการ projection หรือดึงข้อมูลมาแสดงผลของคีย์ที่ชื่อ 
+// `order_date` และ `total_price` ในรายการทุกออเดอร์ของ Jane Doe
+
+use("chrome-burger-db");
+db.orders.find(
+    {
+    "staff.first_name":"Jane",
+    "staff.last_name":"Doe"
+    },
+    {
+        order_date:1,
+        total_price:1
+    }
+);
