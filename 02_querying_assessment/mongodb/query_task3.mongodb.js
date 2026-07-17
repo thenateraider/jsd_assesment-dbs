@@ -17,7 +17,7 @@
 // Write in English or Thai. Do not skip this step.
 //
 // Your thinking:
-// อันดับแรก ต้องทำการดูโครงสร้างข้อมูลก่อน โดยจะไปดูที่ Collection ingredients 
+// อันดับแรก ต้องทำการดูโครงสร้างข้อมูลchromeburgerdbก่อน โดยจะไปดูที่ Collection ingredients 
 // เพราะมีการบรรจุวัตถุดิบใน collection นั้น โดยเมื่อเข้าไปแล้ว
 // ก็จะพบเจอ document รายการวัตถุดิบเมนูแต่ละอย่าง โดยก็จะมีข้อมูลของแต่ละวัตถุดิบแยกกันหลาย doc
 // จากโจทย์ข้อนี่ เราจะสนใจจากข้อมูลคงคลัง ใน key ชื่อ "stock_level" ซึ่งจะมี value 
