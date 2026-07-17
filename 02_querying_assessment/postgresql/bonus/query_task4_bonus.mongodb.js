@@ -19,4 +19,32 @@
 // Write in English or Thai. Do not skip this step.
 //
 // Your thinking:
-//
+// ตอนนี้ เรามี ข้อมูล ส่วนวัตถุุดิบ ingredients และ supplier 
+// ของร้านจากcollection Ingredients และ Suppliers ตามลำดับ (จากที่ Insert Into ไป) แล้ว 
+// โดยจะ aggregation ข้อมูลผ่านคอลัมน์ supplier_id จากตาราง Ingredients กับ Suppliers 
+// ที่เพื่อเชื่อมกัน ด้วยการ lookup
+// ระบุว่า ingredient นั้น มี ซัพพลายเออร์ชื่ออะไรรองรับอยู่ ซึ่งตอนนี้ ตาราง ingredients มันมี แค่ suppliers id
+// นั่นเป็นเหตุผลว่าทำไมถึงต้อง lookup เพื่อหาชื่อของ suppliers ใดๆ ที่ เข้าเงื่อนไข (match)
+// และเเลือกมาแสดงผล (project) ด้วยการเลือกมาแสดงแต่ ชื่อ name ของ ingredient นั้นๆของแหล่งวัตถุดิบที่แมตช์ไป
+
+use("chrome-burger-db");
+
+db.ingredients.aggregate([
+    {
+        $lookup: {
+          from: "suppliers",
+          localField: "supplier_id",
+          foreignField: "_id",
+          as: "suppliers_info"
+        }
+    },
+    {
+        $match:{"suppliers_info.name":"Freshest Farm Produce"}
+    },
+    {
+        $project: {
+          _id:0,
+          name:1
+        }
+    }
+]);
