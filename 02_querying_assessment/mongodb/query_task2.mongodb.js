@@ -35,8 +35,8 @@ db.orders.find(
     },
     {
         _id:0,
-        staff:0,
-        items:0 
-        //ปิด ไม่แสดง items id และ staff เพราะโจทยบอกเอาแค่ `order_date` และ `total_price`
+        order_date:1,
+        total_price:1
+        //ปิด ไม่แสดง id เพราะโจทยบอกเอาแค่ `order_date` และ `total_price`
     }
 );

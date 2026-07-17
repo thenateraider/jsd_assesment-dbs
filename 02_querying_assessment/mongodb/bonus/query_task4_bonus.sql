@@ -16,5 +16,18 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
+
 -- Your thinking:
---
+-- อันดับแรก ต้องทำการดูโครงสร้างข้อมูลตารางก่อน โดยเราสนใจในส่วนยอดขายทั้งหมดในออเดอร์
+-- โดยจะต้องไปดูที่ table "Orders" โดยเมื่อเข้าไปแล้ว
+-- ก็จะพบเจอ row รายการสั่งซื้อ หรือออเดอร์แต่ละอัน และแต่ละออเดอร์ก็จะมีข้อมูลของตนเอง
+-- จากโจทย์ข้อนี่ เราจะสนใจ รายได้รวมทั้งหมด (Total Revenue Summary)
+-- เราก็ต้องกวาด ค้นหา ข้อมูลทุกอันใน table "orders" 
+-- โดยเราจะสนใจโดยการกรองหา find column ในแต่ละ order ในคีย์ชื่อ "total_price" 
+-- จากนั้น พอได้total price ทุกออเดอร์ต้องนำมา รวมกัน Aggregation ด้วยกระบวนการหาผลลรวม หรือ Sum 
+-- เพื่อหาผลรวมของ total price ทุกออเดอร์ และ ยุบเป็น table คอลัมน์เดียว
+-- และนำมาแสดงผล (SELECT) ผลลัพธ์การบวกนั้น เป็น ตารางที่มี column ข้อมูล 
+-- เดียวชื่อ "total_revenue โดยจะบรรจุตัวเลขผลรวมยอดขายทุกออเดอร์ที่เกิดขึ้นในร้าน"
+
+SELECT SUM(total_price) AS total_revenue FROM Orders;
+
