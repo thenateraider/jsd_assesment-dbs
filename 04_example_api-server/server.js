@@ -78,6 +78,7 @@ app.get("/api/menu-items", async (req, res) => {
 app.get("/api/mongodb-menu-items", async (req, res) => {
   try {
     const menuItems = await MongoMenuItem.find({});
+    console.log(menuItems);
     const transformedMenuItems = menuItems.map((item) => ({
       ...item.toObject(),
       price: item.price ? item.price.toString() : "0.00",
