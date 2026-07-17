@@ -45,12 +45,18 @@ pool.query("SELECT 1")
 
 // MongoDB Connection
 // Make sure to add your MONGO_URI to the .env file
-mongoose.connect(process.env.MONGO_URI);
+
+mongoose.connect(process.env.MONGO_URI, {
+  dbName: 'chrome-burger-db'
+});
+
 const mongoDB = mongoose.connection;
 mongoDB.on("error", console.error.bind(console, "MongoDB connection error:"));
 mongoDB.once("open", () => {
   console.log("Connected to MongoDB");
 });
+// เปิดใช้งาน Debug Mode ของ Mongoose
+mongoose.set('debug', true);
 
 // Mongoose Schema and Model for MenuItems
 const menuItemSchema = new mongoose.Schema({
