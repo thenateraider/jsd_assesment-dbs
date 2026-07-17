@@ -17,4 +17,8 @@
 -- Write in English or Thai. Do not skip this step.
 --
 -- Your thinking:
---
+--  ตอนนี้ เรามี ข้อมูล เมนูในร้านในตาราง MenuItems (จากที่ Insert Into ไป) แล้ว โดยจะมีฟิลด์ข้อมูลต่างๆบรรจุในตาราง
+-- แต่ข้อมูลที่เราสนใจและต้องการ "เลือก (Select)" มาก็คือ ชื่อเมนู (name) และ ราคา (price) 
+-- โดย จะต้องเป็นเมนูและราคาที่อยู่ในหมวด category = "Side" หรือเครื่องเคียง มาแสดงผล
+
+SELECT name,price FROM MenuItems WHERE category='Side';

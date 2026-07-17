@@ -17,4 +17,9 @@
 -- Write in English or Thai. Do not skip this step.
 --
 -- Your thinking:
---
+--  ตอนนี้ เรามี ข้อมูล พนักงาน (staff)ในร้านในตาราง Staff (จากที่ Insert Into ไป) แล้ว 
+-- โดยจะมีฟิลด์ข้อมูลต่างๆของพนักงานบรรจุในตารางนั้น
+-- แต่ข้อมูลที่เราสนใจและต้องการ "เลือก (Select)" มาก็คือ ชื่อ (first_name) และ นามสกุล (last_name) 
+-- โดย จะต้องเป็นพนักงานที่เป็น cook เท่านั้น ซึ่งตรวจได้จาก rols = "Cook" หรือกุ๊ก
+
+SELECT first_name,last_name FROM Staff WHERE role='Cook';

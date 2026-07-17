@@ -17,4 +17,14 @@
 -- Write in English or Thai. Do not skip this step.
 --
 -- Your thinking:
---
+-- ตอนนี้ เรามี ข้อมูล ส่วนวัตถุุดิบ ingredients และ supplier 
+-- ของร้านจากตาราง Ingredients และ Suppliers ตามลำดับ (จากที่ Insert Into ไป) แล้ว 
+-- โดยจะจับคู่ข้อมูลผ่านคอลัมน์ supplier_id จากตาราง Ingredients กับ Suppliers ที่เพื่อเชื่อมกันแล้ว
+-- ระบุว่า ingredient นั้น มี ซัพพลายเออร์ชื่ออะไรรองรับอยู่
+-- จากนั้นทำการจัดกลุ่มซัพพลายเออร์ จากทุกๆออเดอร์ให้เป็นตารางเดียวกันแถวเดียว 
+-- ด้วยการเลือกมาแสดงแต่ ชื่อ name ของ ingredient นั้นๆ
+
+SELECT Ingredients.name
+FROM Ingredients
+INNER JOIN Suppliers ON Ingredients.supplier_id = Suppliers.supplier_id
+WHERE Suppliers.name = 'Freshest Farm Produce';
