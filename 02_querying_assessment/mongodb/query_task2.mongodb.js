@@ -25,7 +25,7 @@
 // โดยเราจะสนใจขั้นแรกโดยการกรองหา find key ชื่อ "staff" ที่มี nested dcoument ย่อย ที่ประกอบไปด้วย
 // first_name ที่ต้องมี value บรรจุว่า "Jane" และ last_name ที่บรรจุ valur ว่า "Doe" และเราไม่ได้สนใจไอดีในตอนนี้
 // จากนั้น พอได้ออเดอร์ทุกออเดอร์ของ Jane Doe แล้ว ก็ทำการ projection หรือดึงข้อมูลมาแสดงผลของคีย์ที่ชื่อ 
-// `order_date` และ `total_price` ในรายการทุกออเดอร์ของ Jane Doe
+// `order_date` และ `total_price` ในรายการทุกออเดอร์ของ Jane Doe (ปิดช่อง _id,staff,items)
 
 use("chrome-burger-db");
 db.orders.find(
@@ -34,7 +34,9 @@ db.orders.find(
     "staff.last_name":"Doe"
     },
     {
-        order_date:1,
-        total_price:1
+        _id:0,
+        staff:0,
+        items:0 
+        //ปิด ไม่แสดง items id และ staff เพราะโจทยบอกเอาแค่ `order_date` และ `total_price`
     }
 );
